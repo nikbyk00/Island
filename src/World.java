@@ -28,6 +28,10 @@ public class World implements Runnable {
         return boxAnimal[0].length; // вернуть вертикаль.
     }
 
+    public BoxAnimal[][] getBoxAnimal() {
+        return boxAnimal;
+    }
+
     public void kill(NaturalObjects obj) {
         boxAnimal[obj.getX()][obj.getY()].kill(obj); // по текущим координатам вызывается метод kill и передаётся obj.
     }
@@ -51,7 +55,7 @@ public class World implements Runnable {
             Thread.sleep(2000);
             for (int j = 0; j < boxAnimal.length; j++) { // с помощью цикла выводим на экран boxAnimal
                 for (int k = 0; k < boxAnimal[j].length; k++) {
-                    List<NaturalObjects> animals = boxAnimal[j][k].getListFauna();
+                    List<Animal> animals = boxAnimal[j][k].getListFauna();
                     animals.forEach(animal -> System.out.print(animal));
                 }
             }
@@ -105,7 +109,7 @@ public class World implements Runnable {
                         if (animal == animal1){ // проверяем что это не один и тот же объект
 
                         } else{
-                            animal.reproducing(animal1); // пробуем размножиться с помощью метода reproducing
+                            animal.reproducing(animal1);
                         }
                     });
                 });

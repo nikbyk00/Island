@@ -26,7 +26,7 @@ public class WorldCreator {
             boxAnimal.born(new Fox(x,y,Animal.Gender.FEMALE));
             boxAnimal.born(new Goat(x,y,Animal.Gender.FEMALE));
             boxAnimal.born(new Mouse(x,y,Animal.Gender.FEMALE));
-            boxAnimal.born(new Plants(x,y));
+            //boxAnimal.born2(new Plants(x,y));
             boxAnimal.born(new Rabbit(x,y,Animal.Gender.FEMALE));
             boxAnimal.born(new Sheep(x,y,Animal.Gender.FEMALE));
             boxAnimal.born(new WildBoar(x,y,Animal.Gender.FEMALE));

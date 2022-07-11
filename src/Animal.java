@@ -1,6 +1,9 @@
 import java.util.Random;
 
 public abstract class Animal extends NaturalObjects {
+    /*
+    Массив для хранения вероятности поедания животными
+     */
     public static int[][] killProbability = new int[][]
             {{0, 0, 0, 0, 0, 10, 15, 60, 80, 60, 70, 15, 10, 40, 0, 0},
                     {0, 0, 15, 0, 0, 0, 0, 20, 40, 0, 0, 0, 0, 10, 0, 0},
@@ -17,47 +20,50 @@ public abstract class Animal extends NaturalObjects {
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100},
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 90, 100},
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100}};
+    /*
+    константы для выбора стороны при движении
+     */
     private final int NORTH = 0;
     private final int SOUTH = 1;
     private final int EAST = 2;
     private final int WEST = 3;
-    private float saturation;
-    private Gender gender;
+    private float saturation; // переменная для уровня насышения
+    private Gender gender; // переменная для хранения гендора
 
     private Random random = new Random();
 
-    int[] vector = new int[]{1, -1, 1, -1};
+    int[] vector = new int[]{1, -1, 1, -1}; // массив для выбора направления
 
     public Animal(int x, int y, Gender gender) {
         super(x, y);
         this.gender = gender;
     }
 
-    public abstract int getSpeed();
+    public abstract int getSpeed(); // вернуть скорость
 
-    public abstract Animal newAnimal();
+    public abstract Animal newAnimal(); // создать новое животное
 
-    public abstract int getPosition();
+    public abstract int getPosition(); // позиция в массиве killProbability
 
-    public abstract int getMaxSaturation();
+    public abstract int getMaxSaturation(); // максимальное насыщение
 
-    public float getSaturation() {
+    public float getSaturation() { // вернуть saturation
         return this.saturation;
     }
 
-    public Gender getGender() {
+    public Gender getGender() { // вернуть gender
         return gender;
     }
 
-    public Random getRandom() {
+    public Random getRandom() { // вернуть random
         return random;
     }
 
-    public void setSaturation(float saturation) {
+    public void setSaturation(float saturation) { // меняем saturation
         this.saturation = saturation;
     }
 
-    public Gender getNewGender() {
+    public Gender getNewGender() { // гениррируем рандомный гендер с помощью random
         gender = Gender.FEMALE;
         if (random.nextInt(10) < 5) {
             gender = Gender.MALE;
@@ -66,61 +72,68 @@ public abstract class Animal extends NaturalObjects {
     }
 
     public void moveDirection(World world) {
-        int newX = getX();
-        int newY = getY();
-        int direction = random.nextInt(4);
-        int speed = getSpeed();
+        int newX = getX(); // возвращаем у объекта координату x
+        int newY = getY(); // возвращаем у объекта координату y
+        int direction = random.nextInt(4); // генирируем число в диапозоне 4
+        int speed = getSpeed(); // возвращаем скорость животного
 
-        switch (direction) {
+        switch (direction) {  // выбор направления
             case NORTH:
             case SOUTH:
-                newY = getY() + (speed * vector[direction]);
-                newY = clamp(newY, 0, world.getWorldMaxY() - 1);
+                newY = getY() + (speed * vector[direction]); // создаём новую координату
+                newY = clamp(newY, 0, world.getWorldMaxY() - 1); // функция не даёт выйти за пределы массива
 
                 break;
             case EAST:
             case WEST:
-                newX = getX() + (speed * vector[direction]);
-                newX = clamp(newX, 0, world.getWorldMaxX() - 1);
+                newX = getX() + (speed * vector[direction]); // создаём новую координату
+                newX = clamp(newX, 0, world.getWorldMaxX() - 1); // функция не даёт выйти за пределы массива
+
+                /*
+                берём старую координату и прибавляем к ней скорость умноженную на значения из массива
+                 */
 
         }
-        world.moveAnimal(this, newX, newY);
+        world.moveAnimal(this, newX, newY); // добовляем по новым координатам
     }
 
-    public static int clamp(int val, int min, int max) {
+    public static int clamp(int val, int min, int max) { // для перемещения
         return Math.max(min, Math.min(max, val));
     }
 
-    public static float clamp(float val, float min, float max) {
+    public static float clamp(float val, float min, float max) { // для поедания
         return Math.max(min, Math.min(max, val));
     }
 
-    public void eat(NaturalObjects animal, World world) {
-        int count = random.nextInt(100) + 1;
-        int animalPosition = animal.getPosition();
-        int pos = this.getPosition();
-        int kill = killProbability[pos][animalPosition];
-        if (count <= kill) {
+    public void eat(Animal animal, World world) {
+        int count = random.nextInt(100) + 1; // генирируем число в диапозоне 100
+        int animalPosition = animal.getPosition(); // возвращаем у переданного животного индекс в массиве killProbability
+        int pos = this.getPosition(); // возвращаем у текущего животного индекс в массиве killProbability
+        int kill = killProbability[pos][animalPosition]; // смотрим вероятность по индексам
+        if (count <= kill) { // если count меньше или равно kill, вызываем метод eatable
             eatable(animal, world);
         }
     }
 
-    public void eatable(NaturalObjects victim, World world) {
-        float newSaturation = this.getSaturation() + victim.getWeight();
+    public void eatable(Animal victim, World world) {
+        float newSaturation = this.getSaturation() + victim.getWeight(); // создаём новое насыщение
+        // проверяем что оно не выходит за пределы maxSaturation
         float newSaturationClamped = clamp(newSaturation, 0, this.getMaxSaturation());
-        this.setSaturation(newSaturationClamped);
-        victim.die(world);
+        this.setSaturation(newSaturationClamped); //меняем насыщение у текущего
+        victim.die(world); // удаляем животного
         System.out.println(this + " съел " + victim);
     }
 
-    public void reproducing(NaturalObjects animal) {
+    public void reproducing(Animal animal) {
+        // если животные одного класса и разного гендера создаём нового животного
         if (this.getClass() == animal.getClass() && this.getGender() != animal.getGender()) {
+            // метод для создания нового животного (переопределён во всех классах наследниках)
             Animal animal1 = animal.newAnimal();
             System.out.println(" Родился новый " + animal1.getClass().toString());
         }
     }
 
-    enum Gender {
+    enum Gender { // гендер
         MALE, FEMALE
     }
 }

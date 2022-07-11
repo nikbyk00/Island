@@ -36,6 +36,4 @@ public abstract class NaturalObjects {
     public void die(World world) {
         world.kill(this);
     }
-
-
 }
