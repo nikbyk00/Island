@@ -1,12 +1,11 @@
-import java.util.Random;
 
 public class WorldCreator {
 
-    public World createWorld(int x, int y) {
+    public BoxAnimal[][] createWorld(int x, int y) {
         BoxAnimal[][] boxAnimals = new BoxAnimal[x][y]; // создаём массив и передаём в него x,y
         addAnimalsToList(boxAnimals); // заполняем массив листами с животными
         System.out.println("Создался мир!! ");
-        return new World(boxAnimals); // создаём мир и передаём в конструктор массив
+        return boxAnimals; // создаём мир и передаём в конструктор массив
     }
 
     private BoxAnimal createAnimal(int x, int y) { // возвращает заполненный BoxAnimal

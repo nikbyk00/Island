@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BoxAnimal {
-    private ArrayList<Animal> listAnimal = new ArrayList<>(); // лист для животных
+    private List<Animal> listAnimal = new ArrayList<>(); // лист для животных
 
     public void born(Animal animal) {
         listAnimal.add(animal); // добавляем переданный объект в лист

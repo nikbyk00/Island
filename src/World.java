@@ -6,18 +6,9 @@ import java.util.List;
  */
 public class World implements Runnable {
     private BoxAnimal[][] boxAnimal; // массив для хранения List с животными.
-    private int live;
 
     public World(BoxAnimal[][] boxAnimals) { // конструктор принемает и инициализирует boxAnimal.
         this.boxAnimal = boxAnimals;
-    }
-
-    public void moveAnimal(Animal animal, int x, int y) {
-        boxAnimal[animal.getX()][animal.getY()].kill(animal); // убираем животное по старым координатам.
-        animal.setX(x); // записываем новую координату x.
-        animal.setY(y); // записываем новую координату y.
-        boxAnimal[x][y].born(animal); // добавляем animal по новым координатам.
-        System.out.println(animal + " перешёл на " + animal.getY() + ", " + animal.getX());
     }
 
     public int getWorldMaxX() {
@@ -33,7 +24,7 @@ public class World implements Runnable {
     }
 
     public void kill(NaturalObjects obj) {
-        boxAnimal[obj.getX()][obj.getY()].kill(obj); // по текущим координатам вызывается метод kill и передаётся obj.
+        boxAnimal[obj.getX()][obj.getY()].kill(obj);// по текущим координатам вызывается метод kill и передаётся obj.
     }
 
     @Override
@@ -48,17 +39,11 @@ public class World implements Runnable {
     public void step() throws InterruptedException {
         for (int i = 0; i < 20; i++) { // вызываем методы в цикле
             move(); // делаем переход
-            Thread.sleep(2000);
+          //  Thread.sleep(1000);
             eat(); // едим
-            Thread.sleep(2000);
+           // Thread.sleep(1000);
             reproduce(); // размножаемся
-            Thread.sleep(2000);
-            for (int j = 0; j < boxAnimal.length; j++) { // с помощью цикла выводим на экран boxAnimal
-                for (int k = 0; k < boxAnimal[j].length; k++) {
-                    List<Animal> animals = boxAnimal[j][k].getListFauna();
-                    animals.forEach(animal -> System.out.print(animal));
-                }
-            }
+            //Thread.sleep(1000);
         }
     }
 
@@ -73,6 +58,14 @@ public class World implements Runnable {
                 });
             }
         }
+    }
+
+    public void moveAnimal(Animal animal, int x, int y) {
+        boxAnimal[animal.getX()][animal.getY()].kill(animal); // убираем животное по старым координатам.
+        animal.setX(x); // записываем новую координату x.
+        animal.setY(y); // записываем новую координату y.
+        boxAnimal[x][y].born(animal); // добавляем animal по новым координатам.
+        System.out.println(animal + " перешёл на " + animal.getY() + ", " + animal.getX());
     }
 
     private void eat() {

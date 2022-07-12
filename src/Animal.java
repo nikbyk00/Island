@@ -34,9 +34,25 @@ public abstract class Animal extends NaturalObjects {
 
     int[] vector = new int[]{1, -1, 1, -1}; // массив для выбора направления
 
+    private int die;
+    private int reproduce;
+    private int move;
+
     public Animal(int x, int y, Gender gender) {
         super(x, y);
         this.gender = gender;
+    }
+
+    public int getDie() {
+        return die;
+    }
+
+    public int getReproduce() {
+        return reproduce;
+    }
+
+    public int getMove() {
+        return move;
     }
 
     public abstract int getSpeed(); // вернуть скорость
@@ -94,6 +110,7 @@ public abstract class Animal extends NaturalObjects {
                  */
 
         }
+        move++;
         world.moveAnimal(this, newX, newY); // добовляем по новым координатам
     }
 
@@ -120,7 +137,8 @@ public abstract class Animal extends NaturalObjects {
         // проверяем что оно не выходит за пределы maxSaturation
         float newSaturationClamped = clamp(newSaturation, 0, this.getMaxSaturation());
         this.setSaturation(newSaturationClamped); //меняем насыщение у текущего
-        victim.die(world); // удаляем животного
+        victim.die(world);// удаляем животного
+        die++;
         System.out.println(this + " съел " + victim);
     }
 
@@ -129,6 +147,7 @@ public abstract class Animal extends NaturalObjects {
         if (this.getClass() == animal.getClass() && this.getGender() != animal.getGender()) {
             // метод для создания нового животного (переопределён во всех классах наследниках)
             Animal animal1 = animal.newAnimal();
+            reproduce++;
             System.out.println(" Родился новый " + animal1.getClass().toString());
         }
     }
