@@ -5,9 +5,8 @@ import java.util.concurrent.Executors;
 public class Starter {
     public static void main(String[] args) {
         WorldCreator worldCreator = new WorldCreator();// создаём объект WorldCreator
-        World world = new World(worldCreator.createWorld(100,20));
-        Thread move = new Thread(world);
-        // создаём нить и передаём в неё worldCreator у которого вызываем метод createWorld (который создаст мир)
+        World world = new World(worldCreator.createWorld(100,20)); // создаём мир
+        Thread move = new Thread(world); // создаём нить и передаём в неё мир
         Thread statistics = new Thread(new Statistics(world)); // создаём нить для вывода статистики
         /*
         запускаем нить
