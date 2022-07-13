@@ -25,7 +25,6 @@ public class WorldCreator {
             boxAnimal.born(new Fox(x,y,Animal.Gender.FEMALE));
             boxAnimal.born(new Goat(x,y,Animal.Gender.FEMALE));
             boxAnimal.born(new Mouse(x,y,Animal.Gender.FEMALE));
-            //boxAnimal.born2(new Plants(x,y));
             boxAnimal.born(new Rabbit(x,y,Animal.Gender.FEMALE));
             boxAnimal.born(new Sheep(x,y,Animal.Gender.FEMALE));
             boxAnimal.born(new WildBoar(x,y,Animal.Gender.FEMALE));
@@ -42,11 +41,13 @@ public class WorldCreator {
             boxAnimal.born(new Fox(x,y,Animal.Gender.MALE));
             boxAnimal.born(new Goat(x,y,Animal.Gender.MALE));
             boxAnimal.born(new Mouse(x,y,Animal.Gender.MALE));
-            //boxAnimal.born(new Plants(x,y));
             boxAnimal.born(new Rabbit(x,y,Animal.Gender.MALE));
             boxAnimal.born(new Sheep(x,y,Animal.Gender.MALE));
             boxAnimal.born(new WildBoar(x,y,Animal.Gender.MALE));
 
+            for (int i = 0; i < 15; i++) {
+                boxAnimal.born2(new Plants(x,y));
+            }
         }
         return boxAnimal;
     }

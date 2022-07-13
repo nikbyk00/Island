@@ -4,6 +4,11 @@ public class Horse extends Animal {
     }
 
     @Override
+    public boolean getHerbivore() {
+        return true;
+    }
+
+    @Override
     public int getMaxSaturation() {
         return 9;
     }

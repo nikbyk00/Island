@@ -1,3 +1,5 @@
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.List;
 
 public class Statistics implements Runnable {
@@ -24,11 +26,6 @@ public class Statistics implements Runnable {
             for (int k = 0; k < boxAnimal[j].length; k++) {
                 List<Animal> animals = boxAnimal[j][k].getListFauna();
                 animals.forEach(Statistics::accept);
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
             }
         }
     }

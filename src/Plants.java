@@ -14,6 +14,8 @@ public class Plants extends Plant{
 
     @Override
     void grow() {
-        new Plants(random.nextInt(100), random.nextInt(20));
+        for (int i = 0; i < 5; i++) {
+            new Plants(random.nextInt(100), random.nextInt(20));
+        }
     }
 }

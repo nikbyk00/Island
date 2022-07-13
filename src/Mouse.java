@@ -4,6 +4,11 @@ public class Mouse extends Animal{
     }
 
     @Override
+    public boolean getHerbivore() {
+        return true;
+    }
+
+    @Override
     public int getSpeed() {
         return 1;
     }

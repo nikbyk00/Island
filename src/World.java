@@ -38,16 +38,14 @@ public class World implements Runnable {
 
     public void step() throws InterruptedException {
         for (int i = 0; i < 20; i++) { // вызываем методы в цикле
-            move(); // делаем переход
-          //  Thread.sleep(1000);
-            eat(); // едим
-           // Thread.sleep(1000);
+            callMove(); // делаем переход
+            callEatAnimal();
+            callEatPlant(); // едим
             reproduce(); // размножаемся
-            //Thread.sleep(1000);
         }
     }
 
-    private void move() {
+    private void callMove() {
         for (int i = 0; i < boxAnimal.length; i++) {
             for (int j = 0; j < boxAnimal[i].length; j++) { // с помощью цикла будем обращаться к каждой ячейки массива.
                 boxAnimal[i][j].getListFauna().forEach(animal -> {
@@ -68,7 +66,7 @@ public class World implements Runnable {
         System.out.println(animal + " перешёл на " + animal.getY() + ", " + animal.getX());
     }
 
-    private void eat() {
+    private void callEatAnimal() {
         for (int i = 0; i < boxAnimal.length; i++) {
             for (int j = 0; j < boxAnimal[i].length; j++) { // с помощью цикла будем обращаться к каждой ячейки массива
                 int finalI = i;
@@ -84,6 +82,19 @@ public class World implements Runnable {
                             animal.eat(animal1,this); // пробуем съесть с помощью метода eat
                         }
                     });
+                });
+            }
+        }
+    }
+    private void callEatPlant() { //todo
+        for (int i = 0; i < boxAnimal.length; i++) {
+            for (int j = 0; j < boxAnimal[i].length; j++) { // с помощью цикла будем обращаться к каждой ячейки массива
+                int finalI = i;
+                int finalJ = j;
+                boxAnimal[i][j].getListFauna().forEach(animal -> {
+                    for (Plant plant : boxAnimal[finalI][finalJ].getListFlora()) {
+                        animal.eatPlant(plant, this);
+                    }
                 });
             }
         }

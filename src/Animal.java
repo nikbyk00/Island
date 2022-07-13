@@ -23,6 +23,7 @@ public abstract class Animal extends NaturalObjects {
     /*
     константы для выбора стороны при движении
      */
+    private boolean herbivore;
     private final int NORTH = 0;
     private final int SOUTH = 1;
     private final int EAST = 2;
@@ -54,6 +55,9 @@ public abstract class Animal extends NaturalObjects {
     public int getMove() {
         return move;
     }
+
+
+    public abstract boolean getHerbivore();
 
     public abstract int getSpeed(); // вернуть скорость
 
@@ -131,7 +135,15 @@ public abstract class Animal extends NaturalObjects {
             eatable(animal, world);
         }
     }
-
+    public void eatPlant(Plant plant, World world) {
+        if (this.getHerbivore() == true){
+            float newSaturation = this.getSaturation() + plant.getWeight();
+            float newSaturationClamped = clamp(newSaturation, 0, this.getMaxSaturation());
+            this.setSaturation(newSaturationClamped);
+            plant.die(world);
+            System.out.println(this + " съел растение " + plant);
+        }
+    }
     public void eatable(Animal victim, World world) {
         float newSaturation = this.getSaturation() + victim.getWeight(); // создаём новое насыщение
         // проверяем что оно не выходит за пределы maxSaturation

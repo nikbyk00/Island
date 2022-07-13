@@ -4,6 +4,11 @@ public class Fox extends Animal{
     }
 
     @Override
+    public boolean getHerbivore() {
+        return false;
+    }
+
+    @Override
     public int getSpeed() {
         return 2;
     }
