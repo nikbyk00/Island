@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.List;
 
 /*
@@ -39,8 +40,8 @@ public class World implements Runnable {
     public void step() throws InterruptedException {
         for (int i = 0; i < 20; i++) { // вызываем методы в цикле
             callMove(); // делаем переход
-            callEatAnimal();
-            callEatPlant(); // едим
+            callEatAnimal(); // едим животных
+            callEatPlant(); // едим растиния
             reproduce(); // размножаемся
         }
     }
@@ -94,6 +95,10 @@ public class World implements Runnable {
                 boxAnimal[i][j].getListFauna().forEach(animal -> {
                     for (Plant plant : boxAnimal[finalI][finalJ].getListFlora()) {
                         animal.eatPlant(plant, this);
+                        /* циклично возвращаем animal и у каждого животного вызываем метод eatPlant и передаём туда
+                        растения, которые мы получаем во внутреннем цикле.
+
+                          */
                     }
                 });
             }

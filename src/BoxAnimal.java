@@ -16,12 +16,13 @@ public class BoxAnimal {
     }
 
     public void kill(NaturalObjects obj) {
-        if(obj instanceof Animal) {
+        if (obj instanceof Animal) {
             listAnimal.remove(obj);// удаляем переданный объект из листа
         } else {
             listPlant.remove(obj);
         }
     }
+
     public void kill(Plant plant) {
         listPlant.remove(plant); // удаляем переданный объект из листа
     }
@@ -29,6 +30,7 @@ public class BoxAnimal {
     public List<Animal> getListFauna() {
         return List.copyOf(listAnimal);
     } // метод возвращает копию листа животных
+
     public List<Plant> getListFlora() {
         return List.copyOf(listPlant);
     } // метод возвращает копию листа растений

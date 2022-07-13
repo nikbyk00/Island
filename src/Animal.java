@@ -136,11 +136,13 @@ public abstract class Animal extends NaturalObjects {
         }
     }
     public void eatPlant(Plant plant, World world) {
-        if (this.getHerbivore() == true){
-            float newSaturation = this.getSaturation() + plant.getWeight();
+        if (this.getHerbivore() == true){ // если животное травоядное
+            float newSaturation = this.getSaturation() + plant.getWeight(); // создаём новое насыщение
+            // проверяем что оно не выходит за пределы maxSaturation
             float newSaturationClamped = clamp(newSaturation, 0, this.getMaxSaturation());
-            this.setSaturation(newSaturationClamped);
-            plant.die(world);
+            this.setSaturation(newSaturationClamped); //меняем насыщение у текущего
+            plant.die(world); // удаляем растение
+            plant.grow();
             System.out.println(this + " съел растение " + plant);
         }
     }
