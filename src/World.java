@@ -1,6 +1,3 @@
-import java.util.Arrays;
-import java.util.List;
-
 /*
 Класс World реализует интерфейс Runnable.
 Хранит двумерный массив, который инициализируется в конструкторе.
