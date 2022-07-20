@@ -76,12 +76,12 @@ public class World implements Runnable {
                 int finalI = i;
                 int finalJ = j;
                 boxAnimal[i][j].getListFauna().forEach(animal -> {
-                    boxAnimal[finalI][finalJ].getListFauna().forEach(animal1 -> {
+                    boxAnimal[finalI][finalJ].getListFauna().forEach(animalInteraction -> {
                         /* с помощью метода getListFauna возвращаем лист, в цикле для каждого animal
                         возвращаем другого animal из списка.
                           */
-                        if (animal != animal1){ // проверяем что это не один и тот же объект
-                            animal.eat(animal1,this); // пробуем съесть с помощью метода eat
+                        if (animal != animalInteraction){ // проверяем что это не один и тот же объект
+                            animal.eat(animalInteraction,this); // пробуем съесть с помощью метода eat
                         }
                     });
                 });
@@ -112,12 +112,12 @@ public class World implements Runnable {
                 int finalI = i;
                 int finalJ = j;
                 boxAnimal[i][j].getListFauna().forEach(animal -> {
-                    boxAnimal[finalI][finalJ].getListFauna().forEach(animal1 -> {
+                    boxAnimal[finalI][finalJ].getListFauna().forEach(animalInteraction -> {
                          /* с помощью метода getListFauna возвращаем лист, в цикле для каждого animal
                         возвращаем другого animal из списка.
                           */
-                        if (animal != animal1){ // проверяем что это не один и тот же объект
-                            animal.reproducing(animal1);
+                        if (animal != animalInteraction){ // проверяем что это не один и тот же объект
+                            animal.reproducing(animalInteraction);
                         }
                     });
                 });
