@@ -1,5 +1,7 @@
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import NaturalObj.Animal;
+import World.World;
+import World.BoxAnimal;
+
 import java.util.List;
 
 public class Statistics implements Runnable {
