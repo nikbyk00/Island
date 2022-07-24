@@ -49,7 +49,7 @@ public class World implements Runnable {
     }
 
     public void step() throws InterruptedException {
-        for (int i = 0; i < 5; i++) { // вызываем методы в цикле
+        for (int i = 0; i < 15; i++) { // вызываем методы в цикле
             callMove(); // делаем переход
             callEatAnimal(); // едим животных
             callEatPlant(); // едим растиния
