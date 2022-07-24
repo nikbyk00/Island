@@ -16,40 +16,40 @@ public class WorldCreator {
         for (int j = 0; j < 10; j++) {
             // заполняем List который хранится в World.BoxAnimal животными и растениями с помощью метода born
 
-            boxAnimal.born(new Horse(x, y, Animal.Gender.FEMALE));
-            boxAnimal.born(new Wolf(x, y, Animal.Gender.FEMALE));
-            boxAnimal.born(new Buffalo(x,y, Animal.Gender.FEMALE));
-            boxAnimal.born(new Bear(x,y,Animal.Gender.FEMALE));
-            boxAnimal.born(new Boa(x,y,Animal.Gender.FEMALE));
-            boxAnimal.born(new Caterpillar(x,y,Animal.Gender.FEMALE));
-            boxAnimal.born(new Deer(x,y,Animal.Gender.FEMALE));
-            boxAnimal.born(new Duck(x,y,Animal.Gender.FEMALE));
-            boxAnimal.born(new Eagle(x,y,Animal.Gender.FEMALE));
-            boxAnimal.born(new Fox(x,y,Animal.Gender.FEMALE));
-            boxAnimal.born(new Goat(x,y,Animal.Gender.FEMALE));
-            boxAnimal.born(new Mouse(x,y,Animal.Gender.FEMALE));
-            boxAnimal.born(new Rabbit(x,y,Animal.Gender.FEMALE));
-            boxAnimal.born(new Sheep(x,y,Animal.Gender.FEMALE));
-            boxAnimal.born(new WildBoar(x,y,Animal.Gender.FEMALE));
+            boxAnimal.bornAnimal(new Horse(x, y, Animal.Gender.FEMALE));
+            boxAnimal.bornAnimal(new Wolf(x, y, Animal.Gender.FEMALE));
+            boxAnimal.bornAnimal(new Buffalo(x,y, Animal.Gender.FEMALE));
+            boxAnimal.bornAnimal(new Bear(x,y,Animal.Gender.FEMALE));
+            boxAnimal.bornAnimal(new Boa(x,y,Animal.Gender.FEMALE));
+            boxAnimal.bornAnimal(new Caterpillar(x,y,Animal.Gender.FEMALE));
+            boxAnimal.bornAnimal(new Deer(x,y,Animal.Gender.FEMALE));
+            boxAnimal.bornAnimal(new Duck(x,y,Animal.Gender.FEMALE));
+            boxAnimal.bornAnimal(new Eagle(x,y,Animal.Gender.FEMALE));
+            boxAnimal.bornAnimal(new Fox(x,y,Animal.Gender.FEMALE));
+            boxAnimal.bornAnimal(new Goat(x,y,Animal.Gender.FEMALE));
+            boxAnimal.bornAnimal(new Mouse(x,y,Animal.Gender.FEMALE));
+            boxAnimal.bornAnimal(new Rabbit(x,y,Animal.Gender.FEMALE));
+            boxAnimal.bornAnimal(new Sheep(x,y,Animal.Gender.FEMALE));
+            boxAnimal.bornAnimal(new WildBoar(x,y,Animal.Gender.FEMALE));
 
-            boxAnimal.born(new Horse(x, y, Animal.Gender.MALE));
-            boxAnimal.born(new Wolf(x, y, Animal.Gender.MALE));
-            boxAnimal.born(new Buffalo(x,y, Animal.Gender.MALE));
-            boxAnimal.born(new Bear(x,y,Animal.Gender.MALE));
-            boxAnimal.born(new Boa(x,y,Animal.Gender.MALE));
-            boxAnimal.born(new Caterpillar(x,y,Animal.Gender.MALE));
-            boxAnimal.born(new Deer(x,y,Animal.Gender.MALE));
-            boxAnimal.born(new Duck(x,y,Animal.Gender.MALE));
-            boxAnimal.born(new Eagle(x,y,Animal.Gender.MALE));
-            boxAnimal.born(new Fox(x,y,Animal.Gender.MALE));
-            boxAnimal.born(new Goat(x,y,Animal.Gender.MALE));
-            boxAnimal.born(new Mouse(x,y,Animal.Gender.MALE));
-            boxAnimal.born(new Rabbit(x,y,Animal.Gender.MALE));
-            boxAnimal.born(new Sheep(x,y,Animal.Gender.MALE));
-            boxAnimal.born(new WildBoar(x,y,Animal.Gender.MALE));
+            boxAnimal.bornAnimal(new Horse(x, y, Animal.Gender.MALE));
+            boxAnimal.bornAnimal(new Wolf(x, y, Animal.Gender.MALE));
+            boxAnimal.bornAnimal(new Buffalo(x,y, Animal.Gender.MALE));
+            boxAnimal.bornAnimal(new Bear(x,y,Animal.Gender.MALE));
+            boxAnimal.bornAnimal(new Boa(x,y,Animal.Gender.MALE));
+            boxAnimal.bornAnimal(new Caterpillar(x,y,Animal.Gender.MALE));
+            boxAnimal.bornAnimal(new Deer(x,y,Animal.Gender.MALE));
+            boxAnimal.bornAnimal(new Duck(x,y,Animal.Gender.MALE));
+            boxAnimal.bornAnimal(new Eagle(x,y,Animal.Gender.MALE));
+            boxAnimal.bornAnimal(new Fox(x,y,Animal.Gender.MALE));
+            boxAnimal.bornAnimal(new Goat(x,y,Animal.Gender.MALE));
+            boxAnimal.bornAnimal(new Mouse(x,y,Animal.Gender.MALE));
+            boxAnimal.bornAnimal(new Rabbit(x,y,Animal.Gender.MALE));
+            boxAnimal.bornAnimal(new Sheep(x,y,Animal.Gender.MALE));
+            boxAnimal.bornAnimal(new WildBoar(x,y,Animal.Gender.MALE));
 
             for (int i = 0; i < 15; i++) {
-                boxAnimal.born2(new Plants(x,y));
+                boxAnimal.bornPlant(new Plants(x,y));
             }
         }
         return boxAnimal;

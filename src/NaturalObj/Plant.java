@@ -8,5 +8,10 @@ public abstract class Plant extends NaturalObjects {
         super(x, y);
     }
 
+    @Override
+    public int getWeight() {
+        return 1;
+    }
+
     abstract void grow();
 }

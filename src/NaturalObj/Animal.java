@@ -46,8 +46,6 @@ public abstract class Animal extends NaturalObjects {
         this.gender = gender;
     }
 
-
-
     public int getDie() {
         return die;
     }
@@ -59,7 +57,6 @@ public abstract class Animal extends NaturalObjects {
     public int getMove() {
         return move;
     }
-
 
     public abstract boolean getHerbivore();
 

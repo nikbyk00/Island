@@ -31,6 +31,14 @@ public class World implements Runnable {
         boxAnimal[obj.getX()][obj.getY()].kill(obj);// по текущим координатам вызывается метод kill и передаётся obj.
     }
 
+    public void moveAnimal(Animal animal, int x, int y)  {
+        boxAnimal[animal.getX()][animal.getY()].kill(animal); // убираем животное по старым координатам.
+        animal.setX(x); // записываем новую координату x.
+        animal.setY(y); // записываем новую координату y.
+        boxAnimal[x][y].bornAnimal(animal); // добавляем animal по новым координатам.
+        System.out.println(animal + " перешёл на " + animal.getY() + ", " + animal.getX());
+    }
+
     @Override
     public void run() {
         try {
@@ -41,7 +49,7 @@ public class World implements Runnable {
     }
 
     public void step() throws InterruptedException {
-        for (int i = 0; i < 20; i++) { // вызываем методы в цикле
+        for (int i = 0; i < 5; i++) { // вызываем методы в цикле
             callMove(); // делаем переход
             callEatAnimal(); // едим животных
             callEatPlant(); // едим растиния
@@ -62,14 +70,6 @@ public class World implements Runnable {
         }
     }
 
-    public void moveAnimal(Animal animal, int x, int y) {
-        boxAnimal[animal.getX()][animal.getY()].kill(animal); // убираем животное по старым координатам.
-        animal.setX(x); // записываем новую координату x.
-        animal.setY(y); // записываем новую координату y.
-        boxAnimal[x][y].born(animal); // добавляем animal по новым координатам.
-        System.out.println(animal + " перешёл на " + animal.getY() + ", " + animal.getX());
-    }
-
     private void callEatAnimal() {
         for (int i = 0; i < boxAnimal.length; i++) {
             for (int j = 0; j < boxAnimal[i].length; j++) { // с помощью цикла будем обращаться к каждой ячейки массива
@@ -82,6 +82,7 @@ public class World implements Runnable {
                           */
                         if (animal != animalInteraction){ // проверяем что это не один и тот же объект
                             animal.eat(animalInteraction,this); // пробуем съесть с помощью метода eat
+
                         }
                     });
                 });
@@ -98,7 +99,6 @@ public class World implements Runnable {
                         animal.eatPlant(plant, this);
                         /* циклично возвращаем animal и у каждого животного вызываем метод eatPlant и передаём туда
                         растения, которые мы получаем во внутреннем цикле.
-
                           */
                     }
                 });

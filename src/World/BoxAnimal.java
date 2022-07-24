@@ -11,11 +11,11 @@ public class BoxAnimal {
     private List<Animal> listAnimal = new ArrayList<>(); // лист для животных
     private List<Plant> listPlant = new ArrayList<>(); // лист для животных
 
-    public void born(Animal animal) {
+    public void bornAnimal(Animal animal) {
         listAnimal.add(animal); // добавляем переданный объект в лист
     }
 
-    public void born2(Plant plant) {
+    public void bornPlant(Plant plant) {
         listPlant.add(plant); // добавляем переданный объект в лист
     }
 
