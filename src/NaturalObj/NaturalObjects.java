@@ -6,7 +6,7 @@ import World.World;
  */
 
 public abstract class NaturalObjects {
-    /*
+    /**
     каждое животное и растение будет хранить свои координаты,
     уметь менять их и возврощать
      */

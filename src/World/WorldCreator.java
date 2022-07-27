@@ -59,8 +59,9 @@ public class WorldCreator {
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {
                 array[i][j] = createAnimal(i,j);
-                /* с помощью цикла для каждой ячейки массива вызываем метод createAnimal,
-                который возврощает объект класса World.BoxAnimal */
+                /** с помощью цикла для каждой ячейки массива вызываем метод createAnimal,
+                который возврощает объект класса World.BoxAnimal
+                */
                 System.out.println(array[i][j]);
             }
         }

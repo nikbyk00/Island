@@ -4,10 +4,10 @@ import NaturalObj.Animal;
 import NaturalObj.NaturalObjects;
 import NaturalObj.Plant;
 
-/*
-Класс World.World реализует интерфейс Runnable.
-Хранит двумерный массив, который инициализируется в конструкторе.
- */
+/**
+ * Класс World.World реализует интерфейс Runnable.
+ * Хранит двумерный массив, который инициализируется в конструкторе.
+ **/
 public class World implements Runnable {
     private BoxAnimal[][] boxAnimal; // массив для хранения List с животными.
 
@@ -62,9 +62,9 @@ public class World implements Runnable {
             for (int j = 0; j < boxAnimal[i].length; j++) { // с помощью цикла будем обращаться к каждой ячейки массива.
                 boxAnimal[i][j].getListFauna().forEach(animal -> {
                     animal.moveDirection(this);
-                    /* с помощью метода getListFauna возвращаем лист, в цикле вызываем
-                     у каждого animal метод moveDirection и передаём в него текущий мир.
-                    */
+                    /** с помощью метода getListFauna возвращаем лист, в цикле вызываем
+                     * у каждого animal метод moveDirection и передаём в него текущий мир.
+                     **/
                 });
             }
         }
@@ -77,9 +77,9 @@ public class World implements Runnable {
                 int finalJ = j;
                 boxAnimal[i][j].getListFauna().forEach(animal -> {
                     boxAnimal[finalI][finalJ].getListFauna().forEach(animalInteraction -> {
-                        /* с помощью метода getListFauna возвращаем лист, в цикле для каждого animal
-                        возвращаем другого animal из списка.
-                          */
+                        /** с помощью метода getListFauna возвращаем лист, в цикле для каждого animal
+                         *  возвращаем другого animal из списка.
+                         **/
                         if (animal != animalInteraction){ // проверяем что это не один и тот же объект
                             animal.eat(animalInteraction,this); // пробуем съесть с помощью метода eat
 
@@ -97,11 +97,12 @@ public class World implements Runnable {
                 boxAnimal[i][j].getListFauna().forEach(animal -> {
                     for (Plant plant : boxAnimal[finalI][finalJ].getListFlora()) {
                         animal.eatPlant(plant, this);
-                        /* циклично возвращаем animal и у каждого животного вызываем метод eatPlant и передаём туда
-                        растения, которые мы получаем во внутреннем цикле.
-                          */
+                        /** циклично возвращаем animal и у каждого животного вызываем метод eatPlant и передаём туда
+                         * растения, которые мы получаем во внутреннем цикле.
+                         **/
                     }
                 });
+
             }
         }
     }
@@ -113,9 +114,9 @@ public class World implements Runnable {
                 int finalJ = j;
                 boxAnimal[i][j].getListFauna().forEach(animal -> {
                     boxAnimal[finalI][finalJ].getListFauna().forEach(animalInteraction -> {
-                         /* с помощью метода getListFauna возвращаем лист, в цикле для каждого animal
-                        возвращаем другого animal из списка.
-                          */
+                         /** с помощью метода getListFauna возвращаем лист, в цикле для каждого animal
+                          *  возвращаем другого animal из списка.
+                          **/
                         if (animal != animalInteraction){ // проверяем что это не один и тот же объект
                             animal.reproducing(animalInteraction);
                         }

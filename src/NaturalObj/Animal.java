@@ -4,7 +4,7 @@ import java.util.Random;
 import World.World;
 
 public abstract class Animal extends NaturalObjects {
-    /*
+    /**
     Массив для хранения вероятности поедания животными
      */
     public static int[][] killProbability = new int[][]
